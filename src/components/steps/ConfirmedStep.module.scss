@@ -1,0 +1,53 @@
+.photo {
+  width: min(62vw, 230px);
+  margin: 0;
+  background: #fbf8f2;
+  padding: 10px 10px 34px;
+  border-radius: 3px;
+  box-shadow: 0 24px 50px -16px rgba(0, 0, 0, 0.7);
+  position: relative;
+  --rot: -3deg;
+  transform: rotate(var(--rot));
+  animation: float 7s ease-in-out infinite;
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: 50% 20%;
+    display: block;
+  }
+
+  figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 8px;
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    color: #29435a;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rot));
+  }
+  50% {
+    transform: translateY(-12px) rotate(calc(var(--rot) + 2deg));
+  }
+}
+
+.when {
+  color: var(--text);
+}
+
+.sig {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--foam);
+}

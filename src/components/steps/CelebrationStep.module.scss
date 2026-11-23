@@ -1,0 +1,102 @@
+.collage {
+  position: relative;
+  width: min(88vw, 360px);
+  height: 250px;
+  margin: 6px 0 4px;
+}
+
+.polaroid {
+  position: absolute;
+  margin: 0;
+  background: #fbf8f2;
+  padding: 8px 8px 26px;
+  border-radius: 3px;
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.6);
+  animation: float 6s ease-in-out infinite;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 1px;
+  }
+
+  figcaption {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    color: #29435a;
+    font-size: 13px;
+  }
+}
+
+.square img {
+  aspect-ratio: 1;
+}
+
+.p1 {
+  width: 40%;
+  left: 2%;
+  top: 18px;
+  --rot: -8deg;
+  animation-delay: -1s;
+}
+
+.p2 {
+  width: 42%;
+  left: 30%;
+  top: 0;
+  --rot: 3deg;
+  z-index: 2;
+  animation-delay: -3s;
+}
+
+.p3 {
+  width: 38%;
+  right: 0;
+  top: 28px;
+  --rot: 9deg;
+  animation-delay: -2s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rot));
+  }
+  50% {
+    transform: translateY(-12px) rotate(calc(var(--rot) + 2deg));
+  }
+}
+
+.place {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-align: left;
+  background: var(--glass);
+  border: 1px solid var(--glass-b);
+  border-radius: 18px;
+  padding: 14px 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  svg {
+    flex: none;
+  }
+
+  p {
+    font-size: 16px;
+    color: var(--text);
+  }
+
+  a {
+    color: var(--foam);
+  }
+}

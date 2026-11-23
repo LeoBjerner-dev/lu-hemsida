@@ -1,0 +1,40 @@
+.summary {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.ticketTop {
+  font-family: var(--serif);
+  font-size: 22px;
+  text-align: center;
+  padding-bottom: 12px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--glass-b);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 2px;
+  border-bottom: 1px dashed rgba(191, 243, 236, 0.18);
+  font-size: 15px;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  dt {
+    color: var(--muted);
+  }
+
+  dd {
+    margin: 0;
+    text-align: right;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+    white-space: pre-line;
+  }
+}
