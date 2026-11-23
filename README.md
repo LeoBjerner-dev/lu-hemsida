@@ -24,10 +24,18 @@ The page works without the env variables too, but confirming shows the error mes
 
 ## Supabase setup
 
+The live project is `lu-hemsida` (ref `fvwptagdcrbpbegkxbid`, region eu-west-3) and this folder is linked to it with `supabase link`. To set up a new one:
+
 1. Create a project at supabase.com.
-2. Run `supabase/migrations/20261123000000_create_date_responses.sql` in the SQL editor (or `supabase db push` if you use the CLI). It creates the `date_responses` table with Row Level Security: anonymous visitors may only insert, signed in users may only read, and nobody can update or delete through the API.
-3. Turn off sign ups: Authentication, Sign In / Providers, untick "Allow new users to sign up". Every signed in user can read the answers, so your account should be the only one.
-4. Create your admin account: Authentication, Users, "Add user", with email and password and "Auto confirm user" ticked.
+2. Apply the migrations in `supabase/migrations/` with `supabase db push` (or paste them into the SQL editor in order). They create `date_responses` with Row Level Security: anonymous visitors may only insert, only accounts listed in `admin_users` may read, and nobody can update or delete through the API.
+3. Turn off sign ups: Authentication, Sign In / Providers, untick "Allow new users to sign up".
+4. Create your admin account: Authentication, Users, "Add user", "Create new user", with your email and a password of your own and "Auto confirm user" ticked.
+5. Allow that account to read the answers by running this in the SQL editor (or with `supabase db query --linked`):
+
+```sql
+insert into public.admin_users (user_id)
+select id from auth.users where email = 'you@example.com';
+```
 
 ## Deploying to Vercel
 
